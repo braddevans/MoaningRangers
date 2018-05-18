@@ -1,10 +1,12 @@
 package com.moaningrangers;
 
+import com.moaningrangers.utils.DetectOS;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
 import org.lwjgl.system.MemoryStack;
 
+import java.io.File;
 import java.nio.IntBuffer;
 
 import static org.lwjgl.glfw.Callbacks.*;
@@ -111,6 +113,16 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        System.out.println("OS: " + DetectOS.getOs());
+        if(DetectOS.getOs().equals("WINDOWS")){
+            System.setProperty("org.lwjgl.librarypath", new File("natives/windows").getAbsolutePath());
+        }
+        if(DetectOS.getOs().equals("MAC")){
+            System.setProperty("org.lwjgl.librarypath", new File("natives/mac").getAbsolutePath());
+        }
+        if(DetectOS.getOs().equals("LINUX")){
+            System.setProperty("org.lwjgl.librarypath", new File("natives/linux").getAbsolutePath());
+        }
         new Main().run();
     }
 

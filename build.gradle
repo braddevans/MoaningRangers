@@ -13,13 +13,16 @@ dependencies {
 
 jar {
     baseName 'Moaning-Rangers'
+    manifest {
+        attributes 'Main-Class': 'com.moaningrangers.Main'
+    }
 }
 
 
 sourceSets {
     main {
         java {
-            srcDir 'src'
+            srcDir 'src/'
         }
     }
 }
