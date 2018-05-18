@@ -1,0 +1,34 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile fileTree(dir: 'lib', include: '*.jar')
+}
+
+jar {
+    baseName 'Moaning-Rangers'
+}
+
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+}
+
+task copyJar(type: Copy) {
+    from jar // here it automatically reads jar file produced from jar task
+    into 'C:/out/moaning/'
+}
+
+build.dependsOn copyJar
+
+
